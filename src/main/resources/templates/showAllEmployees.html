@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1> All employees</h1>
+
+    <table>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>Surname</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Operations</th>
+        </tr>
+
+        <tr th:each="el : ${allEmps}">
+            <td th:text="${el.id}"></td>
+            <td th:text="${el.name}"></td>
+            <td th:text="${el.surname}"></td>
+            <td th:text="${el.department}"></td>
+            <td th:text="${el.salary}"></td>
+            <td>
+                <a th:href="@{/updateEmployee/{id}(id=${el.id})}">
+                    <input type="button" value="update">
+
+                </a>
+                <a th:href="@{/deleteEmployee/{id}(id=${el.id})}">
+                    <input type="button" value="delete">
+
+                </a>
+            </td>
+
+        </tr>
+
+    </table>
+
+    <br>
+    <input type="button" value="Add new Employee"
+           onclick="window.location.href='newEmployee'">
+
+    </tr>
+
+</div>
